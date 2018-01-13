@@ -2,6 +2,15 @@ import React from 'react';
 import Logo from '../../images/boomtown-logo.svg';
 import './styles.css';
 
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+  NavLink
+} from 'react-router-dom';
+
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -25,18 +34,22 @@ const Header = () => {
         </SelectField>
       </div>
       <div className="header-btn">
-        <RaisedButton
-          className="profile-btn"
-          label="Profile"
-          primary={true}
-          style={style}
-        />
-        <RaisedButton
-          className="log-btn"
-          label="LOG OUT"
-          primary={true}
-          style={style}
-        />
+        <NavLink to="/profile" exact activeClassName="selected">
+          <RaisedButton
+            className="profile-btn"
+            label="Profile"
+            primary={true}
+            style={style}
+          />
+        </NavLink>
+        <NavLink to="/items" exact activeClassName="selected">
+          <RaisedButton
+            className="log-btn"
+            label="LOG OUT"
+            primary={true}
+            style={style}
+          />
+        </NavLink>
       </div>
     </div>
   );
