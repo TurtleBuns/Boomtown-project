@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import registerServiceWorker from './registerServiceWorker';
-
+import { Provider } from 'react-redux';
+import store from './redux/store.js';
 import './index.css';
 import muiTheme from './config/theme';
 
@@ -17,11 +18,13 @@ const Boomtown = () => (
   <BrowserRouter>
     <Switch>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Layout>
-          <Route path="/login" component={Login} />
-          <Route path="/items" component={Items} />
-          <Route path="/profile:id" component={Profile} />
-        </Layout>
+        <Provider store={store}>
+          <Layout>
+            <Route path="/login" component={Login} />
+            <Route path="/items" component={Items} />
+            <Route path="/profile/:id" component={Profile} />
+          </Layout>
+        </Provider>
       </MuiThemeProvider>
     </Switch>
   </BrowserRouter>
