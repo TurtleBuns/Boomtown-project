@@ -16,6 +16,9 @@ import moment from 'moment';
 const Items = ({ data }) => (
   <div className="card">
     <Card>
+      <CardMedia overlay={<CardTitle title="" subtitle="" />}>
+        <img src={data.imageurl} alt="" />
+      </CardMedia>
       <CardHeader
         title={data.itemowner.fullname}
         subtitle={moment(data.created)
@@ -25,9 +28,7 @@ const Items = ({ data }) => (
           <Gravatar className="circleeman" email={data.itemowner.email} />
         }
       />
-      <CardMedia overlay={<CardTitle title="" subtitle="" />}>
-        <img src={data.imageurl} alt="" />
-      </CardMedia>
+
       <CardTitle title={data.title} subtitle={data.tags} />
       <CardText>{data.description}</CardText>
       <CardActions>
